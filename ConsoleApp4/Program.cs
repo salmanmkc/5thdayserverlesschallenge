@@ -13,28 +13,29 @@ namespace ConsoleApp4
 {
     class Program
     {
-        private const string key_var = "614aa3d48e0e4f549ccaf78c604f6780";
-        private static readonly string key = Environment.GetEnvironmentVariable(key_var);
-
-        private const string endpoint_var = "https://textanalysisforazure5thdayofserverless.cognitiveservices.azure.com/";
-        private static readonly string endpoint = Environment.GetEnvironmentVariable(endpoint_var);
+        public const string Endpoint = "https://textanalysisforazure5thdayofserverless.cognitiveservices.azure.com/";
+        private const string SubscriptionKey = "614aa3d48e0e4f549ccaf78c604f6780";
+        
         static void Main(string[] args)
         {
-            getMessage();
+            //getMessage();
             var client = authenticateClient();
+
             sentimentAnalysisExample(client);
             languageDetectionExample(client);
             entityRecognitionExample(client);
             keyPhraseExtractionExample(client);
-            Console.ReadLine();
+            Console.Write("Press any key to exit.");
+            Console.ReadKey();
+            
         }
 
         static TextAnalyticsClient authenticateClient()
         {
-            ApiKeyServiceClientCredentials credentials = new ApiKeyServiceClientCredentials(key);
+            ApiKeyServiceClientCredentials credentials = new ApiKeyServiceClientCredentials(SubscriptionKey);
             TextAnalyticsClient client = new TextAnalyticsClient(credentials)
             {
-                Endpoint = endpoint
+                Endpoint = Endpoint
             };
             return client;
         }
@@ -42,13 +43,13 @@ namespace ConsoleApp4
 
         static void languageDetectionExample(ITextAnalyticsClient client)
         {
-            var result = client.DetectLanguage("This is a document written in English.");
+            var result = client.DetectLanguage("This is something.");
             Console.WriteLine($"Language: {result.DetectedLanguages[0].Name}");
         }
 
         static void sentimentAnalysisExample(ITextAnalyticsClient client)
         {
-            var result = client.Sentiment("I had the best day of my life.", "en");
+            var result = client.Sentiment("I had the worse day of my life.", "en");
             Console.WriteLine($"Sentiment Score: {result.Score:0.00}");
         }
         static void entityRecognitionExample(ITextAnalyticsClient client)
