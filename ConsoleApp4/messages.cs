@@ -11,15 +11,17 @@ namespace ConsoleApp4
 
         public class Rootobject
         {
-            public Class1[] Property1 { get; set; }
+            public Child[] children { get; set; }
         }
 
-        public class Class1
+        public class Child
         {
             public string who { get; set; }
             public string message { get; set; }
             public string mssage { get; set; }
         }
+
+
 
     }
 }
