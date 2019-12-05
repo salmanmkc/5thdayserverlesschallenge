@@ -66,6 +66,19 @@ namespace ConsoleApp4
             }
         }
 
+        static void keyPhraseExtractionExample(TextAnalyticsClient client)
+        {
+            var result = client.KeyPhrases("My cat might need to see a veterinarian.");
+
+            // Printing key phrases
+            Console.WriteLine("Key phrases:");
+
+            foreach (string keyphrase in result.KeyPhrases)
+            {
+                Console.WriteLine($"\t{keyphrase}");
+            }
+        }
+
         static async void getMessage()
         {
             //store the GET request in a URL which can be referenced later
