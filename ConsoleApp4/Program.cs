@@ -51,6 +51,20 @@ namespace ConsoleApp4
             var result = client.Sentiment("I had the best day of my life.", "en");
             Console.WriteLine($"Sentiment Score: {result.Score:0.00}");
         }
+        static void entityRecognitionExample(ITextAnalyticsClient client)
+        {
+
+            var result = client.Entities("Microsoft was founded by Bill Gates and Paul Allen on April 4, 1975, to develop and sell BASIC interpreters for the Altair 8800.");
+            Console.WriteLine("Entities:");
+            foreach (var entity in result.Entities)
+            {
+                Console.WriteLine($"\tName: {entity.Name},\tType: {entity.Type ?? "N/A"},\tSub-Type: {entity.SubType ?? "N/A"}");
+                foreach (var match in entity.Matches)
+                {
+                    Console.WriteLine($"\t\tOffset: {match.Offset},\tLength: {match.Length},\tScore: {match.EntityTypeScore:F3}");
+                }
+            }
+        }
 
         static async void getMessage()
         {
