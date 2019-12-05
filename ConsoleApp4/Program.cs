@@ -39,6 +39,13 @@ namespace ConsoleApp4
             return client;
         }
 
+
+        static void languageDetectionExample(ITextAnalyticsClient client)
+        {
+            var result = client.DetectLanguage("This is a document written in English.");
+            Console.WriteLine($"Language: {result.DetectedLanguages[0].Name}");
+        }
+
         static void sentimentAnalysisExample(ITextAnalyticsClient client)
         {
             var result = client.Sentiment("I had the best day of my life.", "en");
