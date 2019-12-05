@@ -30,10 +30,10 @@ namespace ConsoleApp4
             string GetRequestURL = "https://christmaswishes.azurewebsites.net/api/Wishes";
 
             //create an instance of HttpClient
-            HttpClient client = new HttpClient();
+            HttpClient jsonclient = new HttpClient();
 
             //get the reponse as JSON format
-            string response = await client.GetStringAsync(GetRequestURL);
+            string response = await jsonclient.GetStringAsync(GetRequestURL);
             string newResponse = @"{ ""children"":" + response + "}";
 
             //parse the data
