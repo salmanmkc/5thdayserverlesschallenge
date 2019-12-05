@@ -29,6 +29,16 @@ namespace ConsoleApp4
             Console.ReadLine();
         }
 
+        static TextAnalyticsClient authenticateClient()
+        {
+            ApiKeyServiceClientCredentials credentials = new ApiKeyServiceClientCredentials(key);
+            TextAnalyticsClient client = new TextAnalyticsClient(credentials)
+            {
+                Endpoint = endpoint
+            };
+            return client;
+        }
+
         static async void getMessage()
         {
             //store the GET request in a URL which can be referenced later
