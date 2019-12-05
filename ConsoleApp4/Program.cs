@@ -21,6 +21,11 @@ namespace ConsoleApp4
         static void Main(string[] args)
         {
             getMessage();
+            var client = authenticateClient();
+            sentimentAnalysisExample(client);
+            languageDetectionExample(client);
+            entityRecognitionExample(client);
+            keyPhraseExtractionExample(client);
             Console.ReadLine();
         }
 
