@@ -39,6 +39,12 @@ namespace ConsoleApp4
             return client;
         }
 
+        static void sentimentAnalysisExample(ITextAnalyticsClient client)
+        {
+            var result = client.Sentiment("I had the best day of my life.", "en");
+            Console.WriteLine($"Sentiment Score: {result.Score:0.00}");
+        }
+
         static async void getMessage()
         {
             //store the GET request in a URL which can be referenced later
