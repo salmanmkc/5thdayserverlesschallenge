@@ -40,7 +40,7 @@ namespace ConsoleApp4
             var parseddata = JsonConvert.DeserializeObject<Rootobject>(newResponse);
 
             //assign the textbox in the UWP application from the deserialsed data
-            Console.WriteLine(parseddata.Property1[0].who.ToString());
+            Console.WriteLine(parseddata.children[0].who.ToString());
 
           
         }
